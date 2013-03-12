@@ -1,0 +1,22 @@
+four sum: need to traverse from 2 side
+
+anagram: hash, sort string.
+
+get the min: set min=a[0], but take care with size =0;
+
+always remember: input is null;
+
+2 loops in DP: take care of the order of the loop. 
+for(j = 0 ; j < len ;j++)
+	for(i = 0 ; i < len -j; i++)
+		a[i][i+j]...
+
+longestSubstring without repeating: dp. ***
+
+container with most water: from 2 side. ***
+
+generate parenthesis: order affects;
+
+use list: remember to initial the head;
+
+reverse k-group: take care of what is the acutal prev;
