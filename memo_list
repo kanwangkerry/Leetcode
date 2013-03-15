@@ -20,3 +20,11 @@ generate parenthesis: order affects;
 use list: remember to initial the head;
 
 reverse k-group: take care of what is the acutal prev;
+
+kmp: strstr
+
+divide 2 integers: take care of many interger types. 2 minus, -2147483648, overflow, use minus when number is large because minus will not overflow. -(-2147483648) is overflow
+
+substring with concatenation of all words. not hard, try next time.
+
+longest parenthese: use stack
