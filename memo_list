@@ -28,3 +28,5 @@ divide 2 integers: take care of many interger types. 2 minus, -2147483648, overf
 substring with concatenation of all words. not hard, try next time.
 
 longest parenthese: use stack
+
+soduku: backtrace model.
