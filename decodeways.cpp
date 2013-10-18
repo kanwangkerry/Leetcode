@@ -1,21 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <tr1/unordered_set>
-#include <set>
-#include <vector>
-#include <map>
-#include <queue>
-using namespace std;
 
+class Solution {
+public:
     bool ableToDecode2(string s, int begin){
         if(begin == s.size() -1 || begin < 0)
             return false;
-        char a[2];
-        a[0] = s[begin+0];
-        a[1] = s[begin+1];
-        int x = atoi(a);
-        if(x>=10 && x <= 26)
+        if(s[begin] == '1' || (s[begin] == '2' && s[begin+1] <= '6' && s[begin+1] >= '0'))
             return true;
         else return false;
     }
@@ -27,6 +16,8 @@ using namespace std;
         if(n ==0)
             return 0;
         int *result = new int[n];
+        for(int i = 0 ; i < n ; i++)
+            result[i] = 0;
             
         if(s[n-1] == '0'){
             result[n-1] = 0;
@@ -34,16 +25,16 @@ using namespace std;
         else{
             result[n-1] = 1;
         }
-        if(s.size() >= 2 && ableToDecode2(s, s.size()-2)){
-            result[s.size()-2] = 1 + result[s.size()-1];
+        if(s.size() >= 2 && ableToDecode2(s, n-2)){
+            result[n-2] = 1 + result[n-1];
         }
-        else if(s.size() >= 2 && !ableToDecode2(s, s.size()-2)){
+        else if(n >= 2 && !ableToDecode2(s, n-2)){
             if(s[s.size()-2] == '0')
-                result[s.size()-2] = 0;
+                result[n-2] = 0;
             else
-                result[s.size()-2] = result[s.size()-1];
+                result[n-2] = result[n-1];
         }
-        for(int i = s.size() - 3; i >= 0 ; i--){
+        for(int i = n - 3; i >= 0 ; i--){
             if(s[i] == '0'){
                 result[i] = 0;
                 continue;
@@ -57,14 +48,5 @@ using namespace std;
         return result[0];
         
     }
-    
-    
-int main(){
-	string s("abc");
-	s.push_back('\0');
-	s += "def";
-	int index = s.find('\0');
 
-	printf("%s\n", s.substr(index+1, s.size()-index - 1).c_str());
-	return 1;
-}
+};

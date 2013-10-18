@@ -1,23 +1,28 @@
+
 class Solution {
 public:
     int jump(int A[], int n) {
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
+        int *steps_index = new int[n];
+        int max =0;
+        int j = 0;
         if(n == 1) return 0;
-        int *jump = new int[n];
-        jump[n-1] = 0;
-        for(int i = n-2; i >= 0; i--){
-            int max = A[i];
-            max = max > (n-1-i)?(n-1-i):max;
-            int min = n + 1;
-            for(int j = 1; j <= max; j++){
-                if(min > jump[i+j]+1)
-                    min = jump[i+j]+1;
+        steps_index[0] = A[0] + 0 > n-1 ? n-1 : A[0] + 0;
+         if(steps_index[j] == n-1)
+                return j+1;
+        for(int i = 1 ; i < n ; ){
+            max = 0;
+            for(; i <= steps_index[j] ; i++){
+                if(max < A[i] + i)
+                    max = A[i] + i;
             }
-            jump[i] = min;
+            j++;
+            steps_index[j] = (max > n-1? n-1: max);
+            if(steps_index[j] == n-1)
+                return j+1;
         }
-        return jump[0];
-
+        return j;
         
     }
 };

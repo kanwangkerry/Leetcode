@@ -1,27 +1,24 @@
+
 class Solution {
 public:
     string longestPalindrome(string s) {
-        int result[1001][1001];
-        int len = s.length();
-        for(int j = 0 ; j < len; j++){
-            for(int i = 0 ; i < len-j ;i++){
-        
-                if(j == 0) result[i][i+j] = 1;
-                else if(j == 1 && s[i] == s[i+j]) result[i][i+j] = 2;
-                else if(j == 1 && s[i] != s[i+j]) result[i][i+j] = 1;
-                else if(s[i] == s[i+j] && result[i+1][i+j-1] == j-1)
-                   result[i][i+j] = j+1;
-                else {
-                    result[i][i+j] = (result[i+1][i+j] > result[i][i+j-1]? result[i+1][i+j]:result[i][i+j-1]);
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        bool result[1000][1000];
+        int len = s.size();
+        for(int i = 0 ; i < len -1 ; i ++){
+            result[i][i] = true;
+            result[i][i+1] = true;
+        }
+        result[len-1][len-1] = true;
+        int startIndex = 0, palinLen = 1;
+        for(int l = 2 ; l <= len ; l++){
+            for(int i = 0 ; i <= len - l ;i ++){
+                result[i][i+l] = result[i+1][i+l-1] && (s[i] == s[i+l-1]);
+                if(result[i][i+l]){
+                    startIndex = i, palinLen = l;
                 }
             }
         }
-        
-        int i;
-        for(i = 0; i + result[0][len-1] < len; i++){
-            if(result[i][i+result[0][len-1]-1] == result[0][len-1]) break;
-        }
-       
-        return s.substr(i, result[0][len-1]);
+        return s.substr(startIndex, palinLen);
     }
 };

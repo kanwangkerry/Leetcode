@@ -30,3 +30,21 @@ substring with concatenation of all words. not hard, try next time.
 longest parenthese: use stack
 
 soduku: backtrace model.
+
+
+sort or general problem: take of the accumulation on previous ones.
+Example: 
+people i's cost of time is ci, process time is ti. calculate the total cost of n people (people will have to wait when others are under processing)
+
+programming challenges: chapter 5 is hard.
+
+leetcode: too much function calls may cause TLE in java.
+when figuring out max or min: remember negative, everytime you add sth, consider negative.
+
+consider about reusing the memory (pascal triangle)
+
+remeber to read traverse with stack.
+
+very long time: recover tree
+
+how to use priority queue: mrege k sorted list
