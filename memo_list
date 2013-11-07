@@ -48,3 +48,5 @@ remeber to read traverse with stack.
 very long time: recover tree
 
 how to use priority queue: mrege k sorted list
+
+combination: use search and backtrace
